@@ -91,25 +91,26 @@
     <div class="col-lg-4"></div>
     <div class="col-lg-4">
     
-        <form method ="POST" action="/signup/confirm">
+        <form method ="POST" action="/signup/confirm" onsubmit="return checkForm()">
             <div class="form-group col-md-12">
                 <h3>Email</h3>
-                <input type="email" class="form-control" name="email">
+                <input type="email" class="form-control" name="email" id="email">
                 <label id="error1"></label>
               </div>
             <div class="form-group col-md-12">
                 <h3>Mobile Number</h3>
-                <input type="number" class="form-control" name="mobile">
+                <input type="number" class="form-control" name="mobile" id="mobile">
                 <label id="error2"></label>
               </div>
             <div class="form-group col-md-12">
                 <h3>Username</h3>
-                <input type="text" name="username" class="form-control" placeholder="Set your username">
+                <input type="text" name="username" id="username" class="form-control" placeholder="Set your username">
+                <label id="error4"></label>
               </div>
               <br>
               <div class="form-group col-md-12">
                 <h3>Password</h3>
-                <input type="password" name="password" class="form-control" placeholder="Set your password">
+                <input type="password" name="password" id="pw" class="form-control" placeholder="Set your password">
                 <label id="error3"></label>
               </div>
               <button id="submit" type="submit" class="btn btn-secondary">Sign-up</button>
@@ -118,14 +119,9 @@
     </div>
     <div class="col-lg-4"></div>
     </div>
-    
             <!-- Form ends -->
-              
             </div>
-          </div>
-                                                                                       
-	                                                
-                                                      
+          </div>                                  
    	</div><!--/col-12-->
   </div>
 </div>

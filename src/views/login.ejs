@@ -91,17 +91,16 @@
 <div class="col-lg-4">
     <br>
     
-    <form method ="POST" action="/login/confirm">
+    <form method ="POST" action="/login/confirm"  onsubmit="return validate()">
         <div class="form-group col-md-12">
             <h3>Username</h3>
             <input type="text" name ="username" class="form-control" id="username" placeholder="Enter username">
-            <label id="error1"></label>
           </div>
           <br>
           <div class="form-group col-md-12">
             <h3>Password</h3>
             <input type="password" name="password" class="form-control" id="pw" placeholder="Enter password">
-            <label id="error2"></label>
+            <label id="error"></label>
           </div>
           <button id="submit" type="submit" class="btn btn-secondary">Login</button>
     </form>

@@ -11,27 +11,21 @@ function router(nav) {
     res.render("signup", { nav, title: "Signup" });
   });
   signupRouter.post("/confirm", function (req, res, next) {
-    try {
-      var newuser = {
-        email: req.body.email,
-        mobile: req.body.mobile,
-        username: req.body.username,
-        password: req.body.password,
-      };
-      var user = Userdata(newuser);
-      user.save();
-      res.redirect("/home");
-    } catch (err) {
-      next(err);
-    }
-    //use schema.create to insert data into the db
-    // Userdata.create(newuser, function (next, user) {
-    //   if (err) {
-    //     return next(err);
-    //   } else {
-    //     return res.redirect("/home");
-    //   }
-    // });
+    var newuser = {
+      email: req.body.email,
+      mobile: req.body.mobile,
+      username: req.body.username,
+      password: req.body.password,
+    };
+    var user = Userdata(newuser);
+    user
+      .save()
+      .then(function () {
+        res.redirect("/home");
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   });
   return signupRouter;
 }

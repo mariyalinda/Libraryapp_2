@@ -11,26 +11,17 @@ function router(nav) {
     res.render("login", { nav, title: "Login" });
   });
   loginRouter.post("/confirm", function (req, res) {
-    // var details = {
-    //   username: req.body.username,
-    //   password: req.body.password,
-    // };
+    var username = req.body.username;
+    var password = req.body.password;
 
-    username: req.body.username;
-    password: req.body.password;
-    Userdata.authenticate(username, password, function (error, user) {
-      if (error) {
-        var err = new Error("Wrong email or password.");
-        err.status = 401;
-        return next(err);
-      } else {
-        return res.redirect("/home");
-      }
-    });
-    // Userdata.findOne(details).then(res.redirect("/home")); //notworking;any value is getting in
-    //do backend validation
+    Userdata.findOne({ username: username, password: password })
+      .then(function () {
+        res.redirect("/home");
+      })
+      .catch(function (error) {
+        res.send("User does not exist. Error is" + error);
+      });
   });
-
   return loginRouter;
 }
 

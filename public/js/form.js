@@ -1,19 +1,11 @@
 function validate() {
-  var flag = false;
   var user = document.getElementById("username");
   var pw = document.getElementById("pw");
-  if (user.value == "admin") {
-    if (pw.value == "12345") {
-      return true;
-    } else {
-      error2.innerText = "Invalid password";
-      error2.style.color = "red";
-      error1.innerText = "Valid username";
-      error1.style.color = "green";
-    }
+  if (user.value.trim().length > 2 && pw.value.trim().length > 4) {
+    return true;
   } else {
-    error1.innerText = "Invalid username";
-    error1.style.color = "red";
+    error.innerText = "INCOMPLETE DETAILS!";
+    error.style.color = "red";
   }
   return false;
 }
