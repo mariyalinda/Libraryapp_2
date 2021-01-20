@@ -14,13 +14,18 @@ function router(nav) {
     var username = req.body.username;
     var password = req.body.password;
 
-    Userdata.findOne({ username: username, password: password })
-      .then(function () {
-        res.redirect("/home");
-      })
-      .catch(function (error) {
-        res.send("User does not exist. Error is" + error);
-      });
+    Userdata.findOne(
+      {
+        $and: [{ username: username }, { password: password }],
+      },
+      function (err, user) {
+        if (user) {
+          res.redirect("/home");
+        } else {
+          res.send("User does not exist");
+        }
+      }
+    );
   });
   return loginRouter;
 }
